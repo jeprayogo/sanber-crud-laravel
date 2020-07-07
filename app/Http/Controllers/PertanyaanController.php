@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Pertanyaan;
+use App\Jawaban;
 
 class PertanyaanController extends Controller
 {
@@ -42,7 +43,8 @@ class PertanyaanController extends Controller
     public function edit($id)
     {
         $pertanyaan = Pertanyaan::findOrFail($id);
-        return view('pertanyaan.edit', compact('pertanyaan'));
+        $list_jawaban = Jawaban::pluck('isi', 'id');
+        return view('pertanyaan.edit', compact('pertanyaan','list_jawaban'));
     }
     
     //menangani proses update
