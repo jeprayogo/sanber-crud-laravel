@@ -20,8 +20,8 @@ class CreateLikesTable extends Migration
 
             $table->primary(['user_id','pertanyaan_id']);
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('pertanyaan_id')->references('id')->on('table_pertanyaan');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('pertanyaan_id')->references('id')->on('table_pertanyaan')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }
